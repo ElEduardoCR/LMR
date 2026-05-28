@@ -10,7 +10,7 @@ const CITIES = [
   { id: "mxli", name: "Mexicali", x: 175, y: 80, state: "Baja California", tier: 2 },
   { id: "her", name: "Hermosillo", x: 245, y: 175, state: "Sonora", tier: 1 },
   { id: "lap", name: "La Paz", x: 230, y: 290, state: "Baja California Sur", tier: 2 },
-  { id: "chi", name: "Chihuahua", x: 365, y: 200, state: "Chihuahua", tier: 1 },
+  { id: "chi", name: "Chihuahua", x: 365, y: 200, state: "Chihuahua", tier: 1, hub: true },
   { id: "tor", name: "Torreón", x: 440, y: 260, state: "Coahuila", tier: 2 },
   { id: "mty", name: "Monterrey", x: 535, y: 245, state: "Nuevo León", tier: 1 },
   { id: "sal", name: "Saltillo", x: 510, y: 275, state: "Coahuila", tier: 2 },
@@ -23,7 +23,7 @@ const CITIES = [
   { id: "leon", name: "León", x: 535, y: 410, state: "Guanajuato", tier: 2 },
   { id: "qro", name: "Querétaro", x: 575, y: 425, state: "Querétaro", tier: 1 },
   { id: "mor", name: "Morelia", x: 545, y: 460, state: "Michoacán", tier: 2 },
-  { id: "cdmx", name: "CDMX", x: 605, y: 460, state: "Ciudad de México", tier: 1, hub: true },
+  { id: "cdmx", name: "CDMX", x: 605, y: 460, state: "Ciudad de México", tier: 1 },
   { id: "pue", name: "Puebla", x: 635, y: 475, state: "Puebla", tier: 1 },
   { id: "ver", name: "Veracruz", x: 680, y: 460, state: "Veracruz", tier: 1 },
   { id: "aca", name: "Acapulco", x: 590, y: 525, state: "Guerrero", tier: 2 },
@@ -35,26 +35,31 @@ const CITIES = [
 ];
 
 const ROUTES = [
-  ["cdmx", "mty"],
-  ["cdmx", "gdl"],
+  // Hub Chihuahua → norte
+  ["chi", "tij"],
+  ["chi", "mxli"],
+  ["chi", "her"],
+  ["chi", "mty"],
+  ["chi", "tor"],
+  ["chi", "dur"],
+  ["chi", "maz"],
+  // Hub Chihuahua → centro y sur (vía Guadalajara y CDMX)
+  ["chi", "gdl"],
+  ["chi", "cdmx"],
+  // Red secundaria
+  ["mty", "tam"],
+  ["mty", "slp"],
+  ["gdl", "ags"],
+  ["gdl", "leon"],
   ["cdmx", "qro"],
   ["cdmx", "pue"],
   ["cdmx", "ver"],
-  ["cdmx", "mer"],
-  ["mty", "tij"],
-  ["mty", "chi"],
-  ["mty", "tam"],
-  ["gdl", "her"],
-  ["gdl", "maz"],
-  ["mer", "can"],
   ["cdmx", "oax"],
-  ["chi", "tij"],
+  ["cdmx", "mer"],
   ["pue", "ver"],
   ["ver", "vll"],
   ["vll", "tux"],
-  ["slp", "gdl"],
-  ["qro", "leon"],
-  ["mty", "slp"],
+  ["mer", "can"],
 ];
 
 export default function CoverageMap() {
@@ -131,7 +136,7 @@ export default function CoverageMap() {
             className="absolute inset-0 opacity-20"
             style={{
               backgroundImage:
-                "linear-gradient(rgba(249,115,22,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(249,115,22,0.3) 1px, transparent 1px)",
+                "linear-gradient(rgba(234,179,8,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(234,179,8,0.3) 1px, transparent 1px)",
               backgroundSize: "40px 40px",
             }}
           />
@@ -143,13 +148,13 @@ export default function CoverageMap() {
           >
             <defs>
               <linearGradient id="routeGrad" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0" stopColor="#fb923c" stopOpacity="0.1" />
-                <stop offset="0.5" stopColor="#f97316" stopOpacity="0.9" />
-                <stop offset="1" stopColor="#fb923c" stopOpacity="0.1" />
+                <stop offset="0" stopColor="#facc15" stopOpacity="0.1" />
+                <stop offset="0.5" stopColor="#eab308" stopOpacity="0.9" />
+                <stop offset="1" stopColor="#facc15" stopOpacity="0.1" />
               </linearGradient>
               <radialGradient id="cityGlow">
-                <stop offset="0" stopColor="#fb923c" stopOpacity="0.8" />
-                <stop offset="1" stopColor="#fb923c" stopOpacity="0" />
+                <stop offset="0" stopColor="#facc15" stopOpacity="0.8" />
+                <stop offset="1" stopColor="#facc15" stopOpacity="0" />
               </radialGradient>
               <filter id="glow">
                 <feGaussianBlur stdDeviation="3" result="b" />
@@ -166,8 +171,8 @@ export default function CoverageMap() {
               animate={inView ? { pathLength: 1, opacity: 0.5 } : {}}
               transition={{ duration: 2.5, ease: "easeInOut" }}
               d="M 110 80 Q 145 70 175 75 L 200 90 L 240 130 Q 270 160 290 200 L 330 220 L 380 200 L 420 210 L 470 240 L 520 240 L 545 230 L 580 245 L 615 265 Q 640 280 670 305 L 720 330 L 750 340 L 790 360 L 815 380 L 840 425 L 875 450 L 920 445 L 935 455 L 920 475 L 870 485 L 830 495 L 780 525 L 750 555 L 720 575 L 680 565 L 650 545 L 620 535 L 590 540 L 555 530 L 520 495 L 490 470 L 460 450 L 435 425 L 415 405 L 400 380 L 380 360 L 355 345 L 330 360 L 305 370 L 280 360 L 255 340 L 230 305 L 220 285 L 235 270 L 245 250 L 240 230 L 225 215 L 210 205 L 195 190 L 180 170 L 175 145 L 160 125 L 140 105 Z"
-              fill="rgba(249,115,22,0.05)"
-              stroke="rgba(249,115,22,0.4)"
+              fill="rgba(234,179,8,0.05)"
+              stroke="rgba(234,179,8,0.4)"
               strokeWidth="1.5"
               strokeLinejoin="round"
             />
@@ -178,8 +183,8 @@ export default function CoverageMap() {
               animate={inView ? { pathLength: 1, opacity: 0.5 } : {}}
               transition={{ duration: 2, ease: "easeInOut", delay: 0.4 }}
               d="M 210 230 Q 215 270 225 305 L 240 325 L 245 295 L 235 260 Z"
-              fill="rgba(249,115,22,0.05)"
-              stroke="rgba(249,115,22,0.4)"
+              fill="rgba(234,179,8,0.05)"
+              stroke="rgba(234,179,8,0.4)"
               strokeWidth="1.5"
             />
 
@@ -189,8 +194,8 @@ export default function CoverageMap() {
               animate={inView ? { pathLength: 1, opacity: 0.5 } : {}}
               transition={{ duration: 2, ease: "easeInOut", delay: 0.6 }}
               d="M 820 470 Q 860 450 905 455 L 925 470 L 920 490 L 870 495 L 835 490 Z"
-              fill="rgba(249,115,22,0.08)"
-              stroke="rgba(249,115,22,0.4)"
+              fill="rgba(234,179,8,0.08)"
+              stroke="rgba(234,179,8,0.4)"
               strokeWidth="1.5"
             />
 
@@ -222,7 +227,7 @@ export default function CoverageMap() {
                   {i % 3 === 0 && inView && (
                     <motion.circle
                       r="3"
-                      fill="#fb923c"
+                      fill="#facc15"
                       filter="url(#glow)"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: [0, 1, 1, 0] }}
@@ -274,7 +279,7 @@ export default function CoverageMap() {
                         delay: 1.5 + i * 0.05,
                         ease: "easeOut",
                       }}
-                      fill={isHub ? "#fb923c" : "#f97316"}
+                      fill={isHub ? "#facc15" : "#eab308"}
                     />
                   )}
                   {/* Outer glow on hover */}
@@ -292,8 +297,8 @@ export default function CoverageMap() {
                     cx={city.x}
                     cy={city.y}
                     r={size}
-                    fill={isHub ? "#fff" : "#fb923c"}
-                    stroke={isHub ? "#fb923c" : "#fff"}
+                    fill={isHub ? "#fff" : "#facc15"}
+                    stroke={isHub ? "#facc15" : "#fff"}
                     strokeWidth={isHub ? 2.5 : 1.5}
                     initial={{ scale: 0, opacity: 0 }}
                     animate={inView ? { scale: 1, opacity: 1 } : {}}

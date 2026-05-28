@@ -12,15 +12,15 @@ const VEHICLES = [
     capacity: "Hasta 20 kg",
     speed: "Express · Mismo día",
     range: "Local · 50 km",
-    color: "from-amber-400 to-orange-500",
-    accent: "#f59e0b",
+    color: "from-yellow-300 to-yellow-600",
+    accent: "#eab308",
     stats: { speed: 95, capacity: 25, range: 40 },
     svg: (
       <svg viewBox="0 0 400 220" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="m1" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#fbbf24" />
-            <stop offset="1" stopColor="#ea580c" />
+            <stop offset="0" stopColor="#fde047" />
+            <stop offset="1" stopColor="#ca8a04" />
           </linearGradient>
         </defs>
         {/* Wheels */}
@@ -31,9 +31,9 @@ const VEHICLES = [
         {/* Body */}
         <path d="M 90 145 Q 130 90 180 95 L 240 95 Q 290 95 320 145 L 290 155 L 130 155 Z" fill="url(#m1)" />
         {/* Box / cargo */}
-        <rect x="195" y="55" width="90" height="55" rx="6" fill="#c2410c" stroke="#7c2d12" strokeWidth="2" />
-        <line x1="240" y1="55" x2="240" y2="110" stroke="#7c2d12" strokeWidth="2" />
-        <line x1="195" y1="82" x2="285" y2="82" stroke="#7c2d12" strokeWidth="2" />
+        <rect x="195" y="55" width="90" height="55" rx="6" fill="#a16207" stroke="#713f12" strokeWidth="2" />
+        <line x1="240" y1="55" x2="240" y2="110" stroke="#713f12" strokeWidth="2" />
+        <line x1="195" y1="82" x2="285" y2="82" stroke="#713f12" strokeWidth="2" />
         {/* Handle */}
         <path d="M 150 110 L 180 90" stroke="#1f1f2e" strokeWidth="5" strokeLinecap="round" />
         {/* Headlight */}

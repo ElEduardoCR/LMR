@@ -5,7 +5,7 @@
 :root {
   --background: #0a0a0f;
   --foreground: #fafafa;
-  --brand: #f97316;
+  --brand: #eab308;
 }
 
 * {
@@ -32,11 +32,11 @@ body {
   background: #0a0a0f;
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #f97316, #c2410c);
+  background: linear-gradient(180deg, #eab308, #a16207);
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #fb923c, #ea580c);
+  background: linear-gradient(180deg, #facc15, #ca8a04);
 }
 
 /* Utility helpers */
@@ -59,7 +59,7 @@ body {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #fb923c 0%, #f97316 50%, #ea580c 100%);
+  background: linear-gradient(135deg, #facc15 0%, #eab308 50%, #ca8a04 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -67,16 +67,16 @@ body {
 
 .gradient-border {
   position: relative;
-  background: linear-gradient(135deg, #f97316, #c2410c);
+  background: linear-gradient(135deg, #eab308, #a16207);
   padding: 1px;
   border-radius: inherit;
 }
 
 .gradient-mesh {
   background-image:
-    radial-gradient(at 27% 37%, hsla(20, 89%, 50%, 0.25) 0px, transparent 50%),
-    radial-gradient(at 97% 21%, hsla(30, 89%, 60%, 0.18) 0px, transparent 50%),
-    radial-gradient(at 52% 99%, hsla(15, 80%, 45%, 0.18) 0px, transparent 50%),
+    radial-gradient(at 27% 37%, hsla(50, 95%, 55%, 0.25) 0px, transparent 50%),
+    radial-gradient(at 97% 21%, hsla(48, 95%, 60%, 0.18) 0px, transparent 50%),
+    radial-gradient(at 52% 99%, hsla(45, 90%, 50%, 0.18) 0px, transparent 50%),
     radial-gradient(at 10% 29%, hsla(0, 0%, 0%, 0.8) 0px, transparent 50%);
 }
 
