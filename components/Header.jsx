@@ -6,11 +6,10 @@ import { Menu, X, Truck } from "lucide-react";
 
 const NAV_ITEMS = [
   { id: "inicio", label: "Inicio" },
-  { id: "seguir", label: "Seguir envío" },
+  { id: "mision", label: "Misión" },
   { id: "equipo", label: "Nuestro equipo" },
   { id: "cobertura", label: "Cobertura" },
   { id: "experiencia", label: "Experiencia" },
-  { id: "contacto", label: "Contacto" },
 ];
 
 export default function Header() {
@@ -48,9 +47,7 @@ export default function Header() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "glass-strong py-3" : "bg-transparent py-5"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-ink-600/10 py-3 transition-all duration-500"
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
@@ -64,17 +61,17 @@ export default function Header() {
             <motion.div
               animate={{ rotate: [0, 5, -5, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-400 to-brand-600 flex items-center justify-center shadow-lg shadow-brand-500/30"
+              className="w-10 h-10 rounded-xl bg-brand-400 flex items-center justify-center shadow-lg shadow-brand-500/30"
             >
-              <Truck className="w-5 h-5 text-white" strokeWidth={2.5} />
+              <Truck className="w-5 h-5 text-ink-900" strokeWidth={2.5} />
             </motion.div>
             <div className="absolute inset-0 rounded-xl bg-brand-500 blur-xl opacity-40 group-hover:opacity-70 transition-opacity" />
           </div>
           <div className="text-left leading-tight">
-            <div className="font-display text-lg font-bold tracking-tight">
+            <div className="font-display text-lg font-bold tracking-tight text-ink-900">
               <span className="gradient-text">LMR</span>
             </div>
-            <div className="text-[10px] uppercase tracking-[0.2em] text-white/60">
+            <div className="text-[10px] uppercase tracking-[0.2em] text-ink-700">
               Mensajería · Logística
             </div>
           </div>
@@ -86,12 +83,12 @@ export default function Header() {
             <button
               key={item.id}
               onClick={() => handleClick(item.id)}
-              className="relative px-4 py-2 text-sm font-medium text-white/80 hover:text-white transition-colors"
+              className="relative px-4 py-2 text-sm font-medium text-ink-800 hover:text-ink-900 transition-colors"
             >
               {activeId === item.id && (
                 <motion.span
                   layoutId="nav-pill"
-                  className="absolute inset-0 rounded-full bg-white/10"
+                  className="absolute inset-0 rounded-full bg-ink-600/20"
                   transition={{ type: "spring", stiffness: 380, damping: 30 }}
                 />
               )}
@@ -106,14 +103,14 @@ export default function Header() {
             onClick={() => handleClick("contacto")}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-brand-500 to-brand-600 text-sm font-semibold shadow-lg shadow-brand-500/30 hover:shadow-brand-500/50 transition-shadow"
+            className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-400 text-ink-900 text-sm font-semibold shadow-lg shadow-brand-500/30 hover:shadow-brand-500/50 transition-shadow"
           >
             Cotizar envío
           </motion.button>
 
           <button
             onClick={() => setOpen((v) => !v)}
-            className="lg:hidden w-10 h-10 rounded-full glass flex items-center justify-center"
+            className="lg:hidden w-10 h-10 rounded-full glass flex items-center justify-center text-ink-900"
             aria-label="Menu"
           >
             {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -141,8 +138,8 @@ export default function Header() {
                   onClick={() => handleClick(item.id)}
                   className={`text-left px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
                     activeId === item.id
-                      ? "bg-brand-500/20 text-brand-300"
-                      : "text-white/80 hover:bg-white/5"
+                      ? "bg-brand-400/20 text-brand-600"
+                      : "text-ink-800 hover:bg-ink-600/10"
                   }`}
                 >
                   {item.label}

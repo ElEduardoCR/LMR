@@ -1,229 +1,179 @@
 "use client";
 
-import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
-import { useEffect, useRef } from "react";
-import { Award, Truck, Users, Globe2, ShieldCheck, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import {
+  ClipboardCheck,
+  Headphones,
+  MapPinned,
+  ShieldCheck,
+  Sparkles,
+  Truck,
+  Users,
+  Wrench,
+} from "lucide-react";
 
-const MILESTONES = [
+import equipoImage from "../image/equipo.JPG";
+
+const TEAM_AREAS = [
   {
-    year: "2014",
-    title: "Inicio del camino",
-    desc: "LMR nace con 2 vans y una visión: entregar a tiempo, siempre.",
+    icon: Headphones,
+    title: "Atención cercana",
+    desc: "Seguimiento claro desde la cotización hasta la entrega final.",
   },
   {
-    year: "2017",
-    title: "Expansión regional",
-    desc: "Abrimos hubs en Guadalajara y Monterrey. Cobertura en 10 estados.",
+    icon: MapPinned,
+    title: "Coordinación de rutas",
+    desc: "Planeación diaria para mover cada unidad con orden y puntualidad.",
   },
   {
-    year: "2020",
-    title: "Logística inteligente",
-    desc: "Plataforma de rastreo en tiempo real y optimización por IA.",
+    icon: Truck,
+    title: "Operadores confiables",
+    desc: "Personal capacitado para cuidar la carga y representar bien a tu empresa.",
   },
   {
-    year: "2023",
-    title: "Cobertura nacional",
-    desc: "32 estados conectados. Más de 500k entregas anuales.",
-  },
-  {
-    year: "2026",
-    title: "El futuro",
-    desc: "Flota eléctrica, drones para última milla y entregas el mismo día.",
+    icon: Wrench,
+    title: "Unidades listas",
+    desc: "Revisión constante de la flotilla para mantener la operación activa.",
   },
 ];
 
 const VALUES = [
   {
     icon: ShieldCheck,
-    title: "Seguridad",
-    desc: "GPS en cada unidad y seguro de carga incluido.",
+    title: "Responsabilidad",
+    desc: "Cada envío se trata como una promesa que debe cumplirse.",
+  },
+  {
+    icon: ClipboardCheck,
+    title: "Orden operativo",
+    desc: "Documentación, rutas y entregas con procesos claros.",
   },
   {
     icon: Sparkles,
-    title: "Puntualidad",
-    desc: "99.4% de entregas a tiempo verificadas.",
-  },
-  {
-    icon: Globe2,
-    title: "Cobertura",
-    desc: "32 estados, 120+ ciudades, sin fronteras internas.",
-  },
-  {
-    icon: Award,
-    title: "Calidad",
-    desc: "Certificación ISO 9001 en operación logística.",
+    title: "Actitud de servicio",
+    desc: "Un equipo atento, resolutivo y disponible para apoyar.",
   },
 ];
 
-function Counter({ to, suffix = "" }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true });
-  const motionVal = useMotionValue(0);
-  const rounded = useTransform(motionVal, (v) => Math.round(v).toLocaleString("es-MX"));
-
-  useEffect(() => {
-    if (inView) {
-      const controls = animate(motionVal, to, {
-        duration: 2,
-        ease: [0.22, 1, 0.36, 1],
-      });
-      return () => controls.stop();
-    }
-  }, [inView, to, motionVal]);
-
-  return (
-    <span ref={ref} className="tabular-nums">
-      <motion.span>{rounded}</motion.span>
-      {suffix}
-    </span>
-  );
-}
-
 export default function Experience() {
   return (
-    <section id="experiencia" className="relative py-32 px-6 overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-brand-500/10 rounded-full blur-3xl -z-10" />
+    <section id="experiencia" className="relative overflow-hidden px-6 py-28">
+      <div className="absolute left-1/2 top-10 -z-10 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-brand-400/10 blur-3xl" />
 
-      <div className="max-w-7xl mx-auto">
+      <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mx-auto mb-14 max-w-3xl text-center"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass mb-6">
-            <Award className="w-3.5 h-3.5 text-brand-400" />
-            <span className="text-xs uppercase tracking-widest text-white/70">
-              12+ años de experiencia
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full glass px-4 py-1.5">
+            <Users className="h-3.5 w-3.5 text-brand-400" />
+            <span className="text-xs uppercase tracking-widest text-ink-800">
+              Equipo LMR
             </span>
           </div>
-          <h2 className="font-display text-4xl md:text-6xl font-bold tracking-tight">
-            Una historia de{" "}
-            <span className="gradient-text">entregas</span>
+          <h2 className="font-display text-4xl font-bold tracking-tight md:text-6xl text-ink-900">
+            Personas que hacen que{" "}
+            <span className="gradient-text">tu envío avance</span>
           </h2>
-          <p className="mt-4 text-white/60 max-w-xl mx-auto">
-            Más de una década llevando lo importante a su destino.
+          <p className="mx-auto mt-4 max-w-2xl text-ink-700">
+            En LMR combinamos atención, coordinación y operación para que cada
+            movimiento tenga seguimiento real y una respuesta clara.
           </p>
         </motion.div>
 
-        {/* Big counters */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20 max-w-5xl mx-auto">
-          {[
-            { value: 12, suffix: "+", label: "Años operando", icon: Award },
-            { value: 500000, suffix: "+", label: "Envíos al año", icon: Truck },
-            { value: 1200, suffix: "+", label: "Clientes activos", icon: Users },
-            { value: 99, suffix: "%", label: "Puntualidad", icon: ShieldCheck },
-          ].map((s, i) => {
-            const Icon = s.icon;
-            return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="glass-strong rounded-2xl p-6 text-center group hover:bg-white/5 transition-colors"
-              >
-                <Icon className="w-6 h-6 text-brand-400 mx-auto mb-3 group-hover:scale-110 transition-transform" />
-                <div className="font-display text-3xl md:text-4xl font-bold gradient-text">
-                  <Counter to={s.value} suffix={s.suffix} />
-                </div>
-                <div className="text-xs uppercase tracking-wider text-white/50 mt-2">
-                  {s.label}
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        {/* Timeline */}
-        <div className="relative max-w-4xl mx-auto mb-20">
-          {/* Vertical line */}
-          <div className="absolute left-8 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-px bg-white/10" />
-          <motion.div
-            initial={{ scaleY: 0 }}
-            whileInView={{ scaleY: 1 }}
-            viewport={{ once: true, margin: "-200px" }}
-            transition={{ duration: 2, ease: "easeOut" }}
-            className="absolute left-8 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-px bg-gradient-to-b from-brand-400 via-brand-500 to-transparent origin-top"
-          />
-
-          <div className="space-y-12">
-            {MILESTONES.map((m, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: i % 2 === 0 ? -40 : 40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                className={`relative flex items-start gap-6 md:gap-12 ${
-                  i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                }`}
-              >
-                {/* Year side */}
-                <div className={`hidden md:block flex-1 ${
-                  i % 2 === 0 ? "text-right" : "text-left"
-                }`}>
-                  <div className="font-display text-5xl font-black gradient-text">
-                    {m.year}
-                  </div>
-                </div>
-
-                {/* Dot */}
-                <div className="relative z-10 shrink-0">
-                  <div className="w-16 h-16 rounded-full glass-strong flex items-center justify-center border-2 border-brand-500/50">
-                    <motion.span
-                      animate={{ scale: [1, 1.3, 1], opacity: [0.5, 0, 0.5] }}
-                      transition={{ duration: 2.5, repeat: Infinity }}
-                      className="absolute inset-0 rounded-full bg-brand-400/30"
-                    />
-                    <span className="md:hidden font-display font-bold text-sm gradient-text">
-                      {m.year}
-                    </span>
-                    <Truck className="hidden md:block w-6 h-6 text-brand-400" />
-                  </div>
-                </div>
-
-                {/* Content side */}
-                <div className="flex-1 glass rounded-2xl p-6 hover:bg-white/5 transition-colors">
-                  <h3 className="font-display text-xl font-bold mb-1">
-                    {m.title}
-                  </h3>
-                  <p className="text-white/60 text-sm leading-relaxed">
-                    {m.desc}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+        {/* Equipo image */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="mb-14 -mx-6 md:-mx-10 lg:-mx-14"
+        >
+          <div className="relative w-full overflow-hidden rounded-none md:rounded-3xl border-y md:border border-ink-600/15">
+            <Image
+              src={equipoImage}
+              alt="Equipo LMR"
+              className="w-full h-auto object-cover"
+              sizes="100vw"
+            />
           </div>
-        </div>
+        </motion.div>
 
-        {/* Values grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {VALUES.map((v, i) => {
-            const Icon = v.icon;
+        <div className="grid gap-4 md:grid-cols-4">
+          {TEAM_AREAS.map((area, i) => {
+            const Icon = area.icon;
             return (
               <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
+                key={area.title}
+                initial={{ opacity: 0, y: 28 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
                 whileHover={{ y: -5 }}
-                className="relative glass rounded-2xl p-6 overflow-hidden group"
+                className="rounded-2xl border border-ink-600/15 bg-white p-6"
               >
-                <div className="absolute -top-10 -right-10 w-32 h-32 bg-brand-500/10 rounded-full blur-2xl group-hover:bg-brand-500/20 transition-colors" />
-                <Icon className="w-8 h-8 text-brand-400 mb-3 relative" />
-                <h4 className="font-display font-bold text-lg mb-1 relative">
-                  {v.title}
-                </h4>
-                <p className="text-sm text-white/60 leading-relaxed relative">
-                  {v.desc}
-                </p>
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-400 text-ink-900 shadow-lg shadow-brand-500/25">
+                  <Icon className="h-6 w-6" />
+                </div>
+                <h3 className="font-display text-xl font-bold text-ink-900">{area.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-ink-700">{area.desc}</p>
               </motion.div>
             );
           })}
+        </div>
+
+        <div className="mt-14 grid items-stretch gap-5 lg:grid-cols-[1.15fr_0.85fr]">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6 }}
+            className="rounded-3xl border border-ink-600/15 bg-white p-8 md:p-10"
+          >
+            <div className="max-w-2xl">
+              <span className="text-xs font-semibold uppercase tracking-[0.28em] text-brand-400">
+                Trabajo coordinado
+              </span>
+              <h3 className="mt-4 font-display text-3xl font-bold md:text-5xl text-ink-900">
+                Un equipo alineado con tus tiempos
+              </h3>
+              <p className="mt-5 text-ink-700 leading-relaxed">
+                Nuestro trabajo no termina al cargar la unidad. El equipo de LMR
+                acompaña cada servicio con comunicación, control de ruta y
+                atención a los detalles que hacen la diferencia en logística.
+              </p>
+            </div>
+          </motion.div>
+
+          <div className="grid gap-4">
+            {VALUES.map((value, i) => {
+              const Icon = value.icon;
+              return (
+                <motion.div
+                  key={value.title}
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ duration: 0.5, delay: i * 0.08 }}
+                  className="rounded-2xl border border-ink-600/15 bg-white p-5"
+                >
+                  <div className="flex gap-4">
+                    <Icon className="mt-1 h-5 w-5 shrink-0 text-brand-400" />
+                    <div>
+                      <h4 className="font-display text-lg font-bold text-ink-900">{value.title}</h4>
+                      <p className="mt-1 text-sm leading-relaxed text-ink-700">
+                        {value.desc}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

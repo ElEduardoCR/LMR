@@ -24,8 +24,8 @@ export default function TrackShipment() {
     <section id="seguir" className="relative py-32 px-6">
       {/* Background decoration */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-400/8 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-ink-600/8 rounded-full blur-3xl" />
       </div>
 
       <div className="max-w-6xl mx-auto">
@@ -38,14 +38,14 @@ export default function TrackShipment() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-brand-400" />
-            <span className="text-xs uppercase tracking-widest text-white/70">
+            <span className="text-xs uppercase tracking-widest text-ink-800">
               Tracking en vivo
             </span>
           </div>
-          <h2 className="font-display text-4xl md:text-6xl font-bold tracking-tight">
+          <h2 className="font-display text-4xl md:text-6xl font-bold tracking-tight text-ink-900">
             Sigue tu <span className="gradient-text">envío</span>
           </h2>
-          <p className="mt-4 text-white/60 max-w-xl mx-auto">
+          <p className="mt-4 text-ink-700 max-w-xl mx-auto">
             Ingresa tu número de guía y conoce el estado de tu paquete en tiempo real.
           </p>
         </motion.div>
@@ -60,23 +60,23 @@ export default function TrackShipment() {
           className="max-w-2xl mx-auto"
         >
           <div className="relative group">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-brand-500 to-brand-600 rounded-2xl blur opacity-30 group-focus-within:opacity-70 transition-opacity" />
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-brand-400 to-brand-500 rounded-2xl blur opacity-30 group-focus-within:opacity-70 transition-opacity" />
             <div className="relative flex items-center glass-strong rounded-2xl p-2">
               <div className="pl-4 pr-3">
-                <Search className="w-5 h-5 text-white/50" />
+                <Search className="w-5 h-5 text-ink-700" />
               </div>
               <input
                 type="text"
                 value={code}
                 onChange={(e) => setCode(e.target.value)}
                 placeholder="Ej: LMR-2026-0042819"
-                className="flex-1 bg-transparent py-4 text-white placeholder:text-white/30 outline-none font-mono tracking-wider"
+                className="flex-1 bg-transparent py-4 text-ink-900 placeholder:text-ink-700/50 outline-none font-mono tracking-wider"
               />
               <motion.button
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 type="submit"
-                className="px-6 py-3 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 font-semibold text-sm shadow-lg shadow-brand-500/30"
+                className="px-6 py-3 rounded-xl bg-brand-400 text-ink-900 font-semibold text-sm shadow-lg shadow-brand-500/30"
               >
                 Rastrear
               </motion.button>
@@ -97,14 +97,14 @@ export default function TrackShipment() {
             >
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
                 <div>
-                  <div className="text-xs uppercase tracking-wider text-white/50 mb-1">
+                  <div className="text-xs uppercase tracking-wider text-ink-700 mb-1">
                     Guía
                   </div>
-                  <div className="font-mono text-lg text-white">{code}</div>
+                  <div className="font-mono text-lg text-ink-900">{code}</div>
                 </div>
-                <div className="flex items-center gap-3 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30">
-                  <Clock className="w-4 h-4 text-emerald-400" />
-                  <span className="text-sm font-medium text-emerald-300">
+                <div className="flex items-center gap-3 px-4 py-2 rounded-full bg-brand-400/15 border border-brand-400/30">
+                  <Clock className="w-4 h-4 text-brand-400" />
+                  <span className="text-sm font-medium text-brand-400">
                     En camino · llegada estimada 16:20
                   </span>
                 </div>
@@ -113,12 +113,12 @@ export default function TrackShipment() {
               {/* Timeline */}
               <div className="relative">
                 {/* Progress line */}
-                <div className="absolute left-6 top-6 bottom-6 w-px bg-white/10" />
+                <div className="absolute left-6 top-6 bottom-6 w-px bg-ink-600/20" />
                 <motion.div
                   initial={{ height: "0%" }}
                   animate={{ height: "62%" }}
                   transition={{ duration: 1.4, ease: "easeOut", delay: 0.3 }}
-                  className="absolute left-6 top-6 w-px bg-gradient-to-b from-brand-400 to-brand-600"
+                  className="absolute left-6 top-6 w-px bg-gradient-to-b from-brand-400 to-brand-500"
                 />
 
                 <div className="space-y-6">
@@ -135,8 +135,8 @@ export default function TrackShipment() {
                         <div
                           className={`relative z-10 w-12 h-12 rounded-full flex items-center justify-center shrink-0 ${
                             step.done
-                              ? "bg-gradient-to-br from-brand-400 to-brand-600 shadow-lg shadow-brand-500/40"
-                              : "bg-white/5 border border-white/10"
+                              ? "bg-brand-400 shadow-lg shadow-brand-500/40"
+                              : "bg-ink-600/10 border border-ink-600/20"
                           }`}
                         >
                           {step.current && (
@@ -148,19 +148,19 @@ export default function TrackShipment() {
                           )}
                           <Icon
                             className={`w-5 h-5 relative ${
-                              step.done ? "text-white" : "text-white/40"
+                              step.done ? "text-ink-900" : "text-ink-700"
                             }`}
                           />
                         </div>
                         <div className="pt-2.5">
                           <div
                             className={`font-semibold ${
-                              step.done ? "text-white" : "text-white/40"
+                              step.done ? "text-ink-900" : "text-ink-700"
                             }`}
                           >
                             {step.label}
                           </div>
-                          <div className="text-sm text-white/50 mt-0.5">
+                          <div className="text-sm text-ink-700 mt-0.5">
                             {step.time}
                           </div>
                         </div>
