@@ -10,11 +10,9 @@ import img2 from "../image/2.JPG";
 import img3 from "../image/3.JPG";
 import img4 from "../image/4.JPG";
 import img5 from "../image/5.JPG";
-import img6 from "../image/6.JPG";
 import img7 from "../image/7.JPG";
-import img8 from "../image/8.JPG";
 
-const GALLERY = [img1, img2, img3, img4, img5, img6, img7, img8];
+const GALLERY = [img1, img2, img3, img4, img5, img7];
 
 const CONTACT_INFO = [
   {
