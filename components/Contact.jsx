@@ -18,22 +18,22 @@ const CONTACT_INFO = [
   {
     icon: Phone,
     label: "Llámanos",
-    value: "614 119 1420",
+    value: "+55 61 4546-3534",
     detail: "Lun a Sáb · 8am - 8pm",
-    href: "tel:+526141191420",
+    href: "tel:+556145463534",
   },
   {
     icon: Mail,
     label: "Escríbenos",
-    value: "ventas@lmrglobaltransport.com",
+    value: "lmrlogistics97@gmail.com",
     detail: "Respuesta < 1h hábil",
-    href: "mailto:ventas@lmrglobaltransport.com",
+    href: "mailto:lmrlogistics97@gmail.com",
   },
   {
     icon: MapPin,
     label: "Hub principal",
-    value: "Chihuahua, Chih.",
-    detail: "Matriz en la ciudad de Chihuahua",
+    value: "Avenida Terrazas 128125-12",
+    detail: "Colonia Las Ánimas, 31415 Chihuahua, México",
     href: "#cobertura",
   },
   {

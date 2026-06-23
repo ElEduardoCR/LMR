@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Instagram, Facebook, Linkedin, ArrowUp } from "lucide-react";
+import { Instagram, Facebook, ArrowUp } from "lucide-react";
 
 import logoImage from "../logo/logo_lmr.jpg";
 
@@ -23,6 +23,26 @@ export default function Footer() {
                 className="w-full h-full object-contain"
                 sizes="80px"
               />
+            </div>
+            <div className="flex items-center gap-3">
+              <a
+                href="https://www.instagram.com/lmr.mx?igsh=MW9sNXNhdTFybGdlMQ%3D%3D&utm_source=qr"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="w-9 h-9 rounded-full bg-ink-800 flex items-center justify-center text-white/70 hover:bg-brand-400/20 hover:text-brand-400 transition-colors"
+              >
+                <Instagram className="w-4 h-4" />
+              </a>
+              <a
+                href="https://www.facebook.com/share/1B3W923XeE/?mibextid=wwXIfr"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="w-9 h-9 rounded-full bg-ink-800 flex items-center justify-center text-white/70 hover:bg-brand-400/20 hover:text-brand-400 transition-colors"
+              >
+                <Facebook className="w-4 h-4" />
+              </a>
             </div>
           </div>
 
