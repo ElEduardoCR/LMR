@@ -18,9 +18,9 @@ const CONTACT_INFO = [
   {
     icon: Phone,
     label: "Llámanos",
-    value: "+55 61 4546-3534",
+    value: "614 546 3534",
     detail: "Lun a Sáb · 8am - 8pm",
-    href: "tel:+556145463534",
+    href: "tel:+526145463534",
   },
   {
     icon: Mail,
